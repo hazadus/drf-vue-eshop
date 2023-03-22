@@ -14,6 +14,7 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 - [Vue.js 3](https://vuejs.org/)
   - [Axios](https://www.npmjs.com/package/axios): Promise based HTTP client for the browser and node.js
   - [Bulma](https://www.npmjs.com/package/bulma): Bulma is a modern CSS framework based on Flexbox.
+  - [Font Awesome](https://fontawesome.com/docs/web/use-with/vue/add-icons): Cool free [icons library](https://fontawesome.com/icons).
 
 ## Dev Tools used
 
