@@ -10,6 +10,7 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 
 - Django
   - Django REST Framework
+  - [djoser](https://djoser.readthedocs.io/en/latest/introduction.html): REST implementation of Django authentication system. djoser library provides a set of Django Rest Framework views to handle basic actions such as registration, login, logout, password reset and account activation.
 - Vue.js 3
 
 ## Dev Tools used
