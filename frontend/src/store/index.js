@@ -1,7 +1,14 @@
 import { createStore } from "vuex";
 
 export default createStore({
-  state: {},
+  state: {
+    cart: {
+      items: [],
+    },
+    isAuthenticated: false,
+    token: "",
+    isLoading: false,
+  },
   getters: {},
   mutations: {},
   actions: {},
