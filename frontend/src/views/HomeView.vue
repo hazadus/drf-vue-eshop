@@ -27,9 +27,11 @@
           </figure>
 
           <h4 class="is-size-4 mb-3">{{ product.name }}</h4>
-          <p class="is-size-6 has-text-grey">&euro;{{ product.price }}</p>
+          <p class="is-size-6 has-text-grey mb-4">&euro;{{ product.price }}</p>
 
-          <a :href="product.get_absolute_url">View details</a>
+          <router-link :to="product.get_absolute_url" class="button is-link">
+            View details
+          </router-link>
         </div>
       </div>
     </div>

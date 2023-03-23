@@ -31,9 +31,7 @@ class Category(models.Model):
         """
         # We can't use traditional Django approach here (using `reverse()` to a Django view), because
         # these views are built in Vue frontend. So, we just return the "hard-coded" URL:
-        return "{frontend_host}/{slug}/".format(
-            frontend_host=settings.FRONTEND_URL, slug=self.slug
-        )
+        return "/{slug}/".format(slug=self.slug)
 
 
 class Product(models.Model):
@@ -79,8 +77,7 @@ class Product(models.Model):
         """
         # We can't use traditional Django approach here (using `reverse()` to a Django view), because
         # these views are built in Vue frontend. So, we just return the "hard-coded" URL:
-        return "{frontend_host}/{category_slug}/{slug}/".format(
-            frontend_host=settings.FRONTEND_URL,
+        return "/{category_slug}/{slug}/".format(
             category_slug=self.category.slug,
             slug=self.slug,
         )
