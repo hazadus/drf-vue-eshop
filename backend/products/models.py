@@ -127,6 +127,7 @@ class Product(models.Model):
         thumbnail_io = BytesIO()
         full_image.save(thumbnail_io, "JPEG", quality=85)
 
-        thumbnail = File(thumbnail_io, name="thumbnail_" + image.name)
+        print(image.name)
+        thumbnail = File(thumbnail_io, name=image.name)
 
         return thumbnail
