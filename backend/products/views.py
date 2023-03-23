@@ -8,13 +8,13 @@ from .serializers import ProductSerializer
 
 class LatestProductsList(APIView):
     """
-    View for latest products. Return 5 newest products in the shop.
+    View for latest products. Return 4 newest products in the shop.
     """
 
     @staticmethod
     def get(request: Request) -> Response:
         """
-        Return 5 newest products in the shop.
+        Return 4 newest products in the shop.
         """
         products = Product.objects.all()[0:4]
         serializer = ProductSerializer(instance=products, many=True)

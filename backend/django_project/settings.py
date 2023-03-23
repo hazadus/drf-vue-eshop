@@ -19,7 +19,7 @@ env.read_env()
 
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG", False)
-FRONTEND_URL = env.str("FRONTEND_URL", "http://127.0.0.1:8000")
+FRONTEND_URL = env.str("FRONTEND_URL", "http://127.0.0.1:8080")
 BACKEND_URL = env.str("BACKEND_URL", "http://127.0.0.1:8000")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ALLOWED_HOSTS = []
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
+    FRONTEND_URL,
 ]
 
 # Application definition

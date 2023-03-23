@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <nav class="navbar is-dark">
+    <nav class="navbar is-link">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item">
           <h2 class="title is-2 has-text-light">
@@ -27,10 +27,16 @@
         class="navbar-menu"
         :class="{ 'is-active': showMobileMenu }"
       >
+        <div class="navbar-start">
+          <router-link to="/vinyl-records" class="navbar-item">
+            Vinyl
+          </router-link>
+          <router-link to="/turntables" class="navbar-item">
+            Turntables
+          </router-link>
+          <router-link to="/mixers" class="navbar-item">Mixers</router-link>
+        </div>
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer</router-link>
-          <router-link to="/winter" class="navbar-item">Winter</router-link>
-
           <div class="navbar-item">
             <div class="buttons">
               <router-link to="/log-in" class="button is-light">

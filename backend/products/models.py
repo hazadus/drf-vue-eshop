@@ -91,7 +91,8 @@ class Product(models.Model):
         Return image URL, or empty string if there's no image.
         """
         if self.image:
-            return "{backend_host}/{image_url}".format(
+            # NB: do not put "/" between host and url here:
+            return "{backend_host}{image_url}".format(
                 backend_host=settings.BACKEND_URL,
                 image_url=self.image.url,
             )
@@ -110,7 +111,8 @@ class Product(models.Model):
             else:
                 return ""
 
-        return "{backend_host}/{thumbnail_url}".format(
+        # NB: do not put "/" between host and url here:
+        return "{backend_host}{thumbnail_url}".format(
             backend_host=settings.BACKEND_URL,
             thumbnail_url=self.thumbnail.url,
         )
