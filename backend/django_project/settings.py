@@ -19,6 +19,8 @@ env.read_env()
 
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG", False)
+FRONTEND_URL = env.str("FRONTEND_URL", "http://127.0.0.1:8000")
+BACKEND_URL = env.str("BACKEND_URL", "http://127.0.0.1:8000")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "djoser",
+    # Local apps
+    "products",
 ]
 
 MIDDLEWARE = [
@@ -121,6 +125,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = env.str("STATIC_ROOT", "staticfiles")
+
+# Media location
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
