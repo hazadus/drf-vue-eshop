@@ -15,6 +15,7 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 ### Videos
 
 - [E-commerce Website With Django and Vue Tutorial (Django Rest Framework)](https://www.youtube.com/watch?v=Yg5zkd9nm6w)
+- Code for video above: [Backend](https://github.com/SteinOveHelset/djackets_django) / [Frontend](https://github.com/SteinOveHelset/djackets_vue).
 - [Vue Router 4 for Everyone](https://vueschool.io/lessons/introduction-to-vue-router-4)
 
 ### Articles

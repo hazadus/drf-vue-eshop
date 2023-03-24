@@ -48,11 +48,13 @@ export default {
     this.getProduct();
   },
   methods: {
-    getProduct() {
+    async getProduct() {
+      this.$store.commit("setIsLoading", true);
+
       const categorySlug = this.$route.params.categorySlug;
       const productSlug = this.$route.params.productSlug;
 
-      axios
+      await axios
         .get(`/api/v1/products/${categorySlug}/${productSlug}/`)
         .then((response) => {
           this.product = response.data;
@@ -60,6 +62,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      // NB: async/await above ensures this will be executed when axios.get() is complete:
+      this.$store.commit("setIsLoading", false);
     },
     addToCart() {
       /*
