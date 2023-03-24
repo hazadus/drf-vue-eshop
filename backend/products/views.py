@@ -1,13 +1,13 @@
 """
-DRF API views for Products.
+DRF API views for Products and Categories.
 """
 from django.http import Http404
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Category
+from .serializers import ProductSerializer, CategorySerializer
 
 
 class LatestProductsList(APIView):
@@ -31,7 +31,7 @@ class ProductDetailView(APIView):
     """
 
     @staticmethod
-    def get_object(category_slug: str, product_slug: str):
+    def get_object(category_slug: str, product_slug: str) -> Product:
         """
         Return product instance.
         """
@@ -53,4 +53,33 @@ class ProductDetailView(APIView):
             category_slug=category_slug, product_slug=product_slug
         )
         serializer = ProductSerializer(product)
+        return Response(serializer.data)
+
+
+class CategoryDetailView(APIView):
+    """
+    Return detail product Category info, including list of all products in this category.
+    """
+    @staticmethod
+    def get_object(category_slug: str) -> Category:
+        """
+        Return category instance.
+        """
+        category = Category.objects.filter(
+            slug=category_slug,
+        )
+
+        if category:
+            return category.first()
+
+        raise Http404
+
+    def get(self, request: Request, category_slug: str) -> Response:
+        """
+        Return category info, including list of all products.
+        """
+        category = self.get_object(
+            category_slug=category_slug,
+        )
+        serializer = CategorySerializer(category)
         return Response(serializer.data)
