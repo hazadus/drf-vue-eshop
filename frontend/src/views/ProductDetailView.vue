@@ -62,6 +62,14 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          toast({
+            message: `Something went wrong, please try again.`,
+            type: "is-danger",
+            dismissible: true,
+            pauseOnHover: true,
+            duration: 5000,
+            position: "bottom-right",
+          });
         });
 
       // NB: async/await above ensures this will be executed when axios.get() is complete:

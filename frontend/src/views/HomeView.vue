@@ -44,6 +44,7 @@
 
 <script>
 import axios from "axios";
+import toast from "bulma-toast";
 
 export default {
   name: "HomeView",
@@ -70,6 +71,14 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          toast({
+            message: `Something went wrong, please try again.`,
+            type: "is-danger",
+            dismissible: true,
+            pauseOnHover: true,
+            duration: 5000,
+            position: "bottom-right",
+          });
         });
 
       this.$store.commit("setIsLoading", false);
