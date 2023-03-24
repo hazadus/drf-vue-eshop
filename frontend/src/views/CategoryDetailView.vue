@@ -1,35 +1,17 @@
 <template>
   <div class="category-detail-page">
-    <div class="column is-multiline">
+    <div class="columns is-multiline">
       <div class="column is-12">
-        <h1 class="title is-size-1">{{ category.name }}</h1>
-
-        <div class="columns is-multiline">
-          <div
-            v-for="product in category.products"
-            :key="product.id"
-            class="column is-3"
-          >
-            <div class="box">
-              <figure class="image mb-4">
-                <img :src="product.thumbnail_url" />
-              </figure>
-
-              <h4 class="is-size-4 mb-3">{{ product.name }}</h4>
-              <p class="is-size-6 has-text-grey mb-4">
-                &euro;{{ product.price }}
-              </p>
-
-              <router-link
-                :to="product.get_absolute_url"
-                class="button is-link"
-              >
-                View details
-              </router-link>
-            </div>
-          </div>
-        </div>
+        <h1 class="title is-size-1">
+          All products in &laquo;{{ category.name }}&raquo;
+        </h1>
       </div>
+
+      <ProductCard
+        v-for="product in category.products"
+        :key="product.id"
+        :product="product"
+      />
     </div>
   </div>
 </template>
@@ -38,14 +20,27 @@
 import axios from "axios";
 import { toast } from "bulma-toast";
 
+import ProductCard from "@/components/ProductCard.vue";
+
 export default {
   name: "CategoryDetailView",
+  components: {
+    ProductCard,
+  },
   data() {
     return {
       category: {
         products: [],
       },
     };
+  },
+  watch: {
+    // eslint-disable-next-line
+    $route(to, from) {
+      if (to.name === "CategoryDetailView") {
+        this.getCategoryDetails();
+      }
+    },
   },
   mounted() {
     this.getCategoryDetails();
@@ -80,11 +75,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.image {
-  margin-top: -1.25rem;
-  margin-left: -1.25rem;
-  margin-right: -1.25rem;
-}
-</style>

@@ -35,11 +35,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* add some free icons */
-import { faVuejs } from "@fortawesome/free-brands-svg-icons";
+import { faVuejs, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
-library.add(faVuejs, faCartShopping);
+library.add(faVuejs, faGithub, faCartShopping);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

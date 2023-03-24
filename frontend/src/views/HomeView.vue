@@ -20,24 +20,11 @@
         <h2 class="is-size-2 has-text-centered">Latest products</h2>
       </div>
 
-      <div
+      <ProductCard
         v-for="product in latestProducts"
         :key="product.id"
-        class="column is-3"
-      >
-        <div class="box">
-          <figure class="image mb-4">
-            <img :src="product.thumbnail_url" />
-          </figure>
-
-          <h4 class="is-size-4 mb-3">{{ product.name }}</h4>
-          <p class="is-size-6 has-text-grey mb-4">&euro;{{ product.price }}</p>
-
-          <router-link :to="product.get_absolute_url" class="button is-link">
-            View details
-          </router-link>
-        </div>
-      </div>
+        :product="product"
+      />
     </div>
   </div>
 </template>
@@ -46,9 +33,13 @@
 import axios from "axios";
 import toast from "bulma-toast";
 
+import ProductCard from "@/components/ProductCard.vue";
+
 export default {
   name: "HomeView",
-  components: {},
+  components: {
+    ProductCard,
+  },
   data() {
     return {
       latestProducts: [],
@@ -86,11 +77,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.image {
-  margin-top: -1.25rem;
-  margin-left: -1.25rem;
-  margin-right: -1.25rem;
-}
-</style>

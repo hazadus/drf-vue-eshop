@@ -29,14 +29,14 @@
           :class="{ 'is-active': showMobileMenu }"
         >
           <div class="navbar-start is-size-5">
-            <router-link to="/vinyl-records" class="navbar-item">
+            <router-link to="/vinyl-records/" class="navbar-item">
               Vinyl
             </router-link>
-            <router-link to="/turntables" class="navbar-item">
+            <router-link to="/turntables/" class="navbar-item">
               Turntables
             </router-link>
-            <router-link to="/mixers" class="navbar-item">Mixers</router-link>
-            <router-link to="/about" class="navbar-item">About</router-link>
+            <router-link to="/mixers/" class="navbar-item">Mixers</router-link>
+            <router-link to="/about/" class="navbar-item">About</router-link>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
