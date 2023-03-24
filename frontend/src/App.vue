@@ -68,6 +68,27 @@
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
+              <form method="get" action="/search/">
+                <div class="field has-addons">
+                  <div class="control">
+                    <input
+                      type="text"
+                      class="input"
+                      placeholder="Find product..."
+                      name="query"
+                    />
+                  </div>
+                  <div class="control">
+                    <button class="button is-info">
+                      <span class="icon">
+                        <font-awesome-icon icon="fa-solid fa-search" />
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="navbar-item">
               <div class="buttons">
                 <router-link to="/log-in" class="button is-light">
                   Log In

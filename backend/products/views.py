@@ -98,7 +98,7 @@ def search_view(request: Request):
 
     if query:
         products = Product.objects.filter(
-            Q(name__icontains=query) & Q(description__icontains=query)
+            Q(name__icontains=query) | Q(description__icontains=query)
         )
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)

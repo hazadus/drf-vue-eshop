@@ -15,7 +15,10 @@
     </section>
 
     <!-- Latest products list -->
-    <div class="columns is-multiline">
+    <div
+      v-if="latestProducts.length"
+      class="latest-products columns is-multiline"
+    >
       <div class="column is-12">
         <h2 class="is-size-2 has-text-centered">Latest products</h2>
       </div>
