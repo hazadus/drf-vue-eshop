@@ -9,6 +9,7 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 - How to use [Vue Router](https://router.vuejs.org/).
 - How to use [Vuex](https://vuex.vuejs.org/guide/).
 - How to use `bulma-toast`.
+- How to properly set page titles for Vue views.
 
 ## References
 

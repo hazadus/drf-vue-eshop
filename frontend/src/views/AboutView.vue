@@ -8,3 +8,12 @@
     <p>Write about what I have learn while doing this project.</p>
   </div>
 </template>
+
+<script>
+export default {
+  name: "AboutView",
+  mounted() {
+    document.title = "About the project | vuEshop";
+  },
+};
+</script>

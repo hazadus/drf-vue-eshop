@@ -54,14 +54,16 @@ export default {
     };
   },
   mounted() {
+    document.title = "Welcome! | vuEshop";
     this.getLatestProducts();
   },
   methods: {
-    getLatestProducts() {
+    async getLatestProducts() {
       /*
       NB: base URL for axios is set in `main.js`.
       */
-      axios
+      this.$store.commit("setIsLoading", true);
+      await axios
         .get("/api/v1/latest-products/")
         .then((response) => {
           this.latestProducts = response.data;
@@ -69,6 +71,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      this.$store.commit("setIsLoading", false);
     },
   },
 };

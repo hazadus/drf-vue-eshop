@@ -58,6 +58,7 @@ export default {
         .get(`/api/v1/products/${categorySlug}/${productSlug}/`)
         .then((response) => {
           this.product = response.data;
+          document.title = this.product.name + " | vuEshop";
         })
         .catch((error) => {
           console.log(error);
