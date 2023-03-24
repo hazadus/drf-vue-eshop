@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Product, Category
+from .models import Category, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -27,6 +27,7 @@ class CategorySerializer(serializers.ModelSerializer):
     Serializer for product Category model.
     Includes list of all products in this category.
     """
+
     # List all the products in the category:
     products = ProductSerializer(many=True)
 

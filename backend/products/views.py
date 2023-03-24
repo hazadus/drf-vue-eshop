@@ -1,13 +1,15 @@
 """
 DRF API views for Products and Categories.
 """
+from django.db.models import Q
 from django.http import Http404
+from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
+from .models import Category, Product
+from .serializers import CategorySerializer, ProductSerializer
 
 
 class LatestProductsList(APIView):
@@ -60,6 +62,7 @@ class CategoryDetailView(APIView):
     """
     Return detail product Category info, including list of all products in this category.
     """
+
     @staticmethod
     def get_object(category_slug: str) -> Category:
         """
@@ -83,3 +86,21 @@ class CategoryDetailView(APIView):
         )
         serializer = CategorySerializer(category)
         return Response(serializer.data)
+
+
+@api_view(["POST"])
+def search_view(request: Request):
+    """
+    Return Product serialized QuerySet filtered by `query`.
+    Post {"query":"searched text"} to get the results.
+    """
+    query = request.data.get("query", "")
+
+    if query:
+        products = Product.objects.filter(
+            Q(name__icontains=query) & Q(description__icontains=query)
+        )
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    else:
+        return Response({"products": []})

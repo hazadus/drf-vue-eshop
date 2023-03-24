@@ -29,14 +29,42 @@
           :class="{ 'is-active': showMobileMenu }"
         >
           <div class="navbar-start is-size-5">
-            <router-link to="/vinyl-records/" class="navbar-item">
+            <router-link
+              to="/vinyl-records/"
+              class="navbar-item"
+              :class="{
+                'is-active': $route.params.categorySlug === 'vinyl-records',
+              }"
+            >
               Vinyl
             </router-link>
-            <router-link to="/turntables/" class="navbar-item">
+            <router-link
+              to="/turntables/"
+              class="navbar-item"
+              :class="{
+                'is-active': $route.params.categorySlug === 'turntables',
+              }"
+            >
               Turntables
             </router-link>
-            <router-link to="/mixers/" class="navbar-item">Mixers</router-link>
-            <router-link to="/about/" class="navbar-item">About</router-link>
+            <router-link
+              to="/mixers/"
+              class="navbar-item"
+              :class="{
+                'is-active': $route.params.categorySlug === 'mixers',
+              }"
+            >
+              Mixers
+            </router-link>
+            <router-link
+              to="/about/"
+              class="navbar-item"
+              :class="{
+                'is-active': $route.name === 'about',
+              }"
+            >
+              About
+            </router-link>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
