@@ -93,7 +93,7 @@
                 <router-link to="/log-in" class="button is-light">
                   Log In
                 </router-link>
-                <router-link to="/cart" class="button is-success">
+                <router-link to="/cart/" class="button is-success">
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
                   &nbsp;Cart ({{ cartTotalQuantity }})
                 </router-link>
