@@ -7,6 +7,10 @@
           Welcome to <font-awesome-icon icon="fa-brands fa-vuejs" />uEshop!
         </p>
         <p class="subtitle">The best online record shop on the block!</p>
+        <p>
+          See <router-link to="/about">About</router-link> page to find out what
+          this is all about.
+        </p>
       </div>
     </section>
 

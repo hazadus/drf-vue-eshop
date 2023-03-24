@@ -1,5 +1,6 @@
 <template>
-  <div class="page-product-detail">
+  <!-- NB: `v-if="product"` below is to exclude `marked` errors when data is not yet loaded from API -->
+  <div v-if="product" class="page-product-detail">
     <div class="columns is-multiline">
       <div class="column is-9">
         <figure class="image mb-6">
@@ -7,7 +8,7 @@
         </figure>
 
         <h1 class="title is-size-1">{{ product.name }}</h1>
-        <p>{{ product.description }}</p>
+        <span v-html="markdownToHtml(product.description)"></span>
       </div>
 
       <div class="column is-3">
@@ -20,10 +21,10 @@
             <input v-model="quantity" type="number" class="input" min="1" />
           </div>
           <div class="control">
-            <a class="button is-link">
+            <button class="button is-link" @click="addToCart">
               <font-awesome-icon icon="fa-solid fa-cart-shopping" />
               &nbsp;Add to cart
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -33,12 +34,13 @@
 
 <script>
 import axios from "axios";
+import { toast } from "bulma-toast";
 
 export default {
   name: "ProductDetailView",
   data() {
     return {
-      product: Object,
+      product: null,
       quantity: 1,
     };
   },
@@ -58,6 +60,37 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    addToCart() {
+      /*
+      Add product to cart (Vuex Store).
+      Display Bulma toast message.
+      */
+      if (isNaN(this.quantity) || this.quantity < 1) {
+        this.quantity = 1;
+      }
+
+      const item = {
+        product: this.product,
+        quantity: this.quantity,
+      };
+
+      this.$store.commit("addToCart", item);
+
+      toast({
+        message: `"${this.product.name}"x${this.quantity} was added to the cart.`,
+        type: "is-success",
+        dismissible: true,
+        pauseOnHover: true,
+        duration: 5000,
+        position: "bottom-right",
+      });
+    },
+    markdownToHtml(markedDownContent) {
+      /*
+       Sanitizes `markedDownContent` and converts markdown to HTML.
+       */
+      return this.markdown(markedDownContent);
     },
   },
 };

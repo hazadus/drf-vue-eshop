@@ -2,9 +2,23 @@
 
 Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 
+## What I have lerned from this tutorial
+
+- Tried out Bulma.
+- DRF can serialize output from `@property` or regular model methods as well as from model fields.
+- How to use [Vue Router](https://router.vuejs.org/).
+- How to use [Vuex](https://vuex.vuejs.org/guide/).
+- How to use `bulma-toast`.
+
 ## References
 
+### Videos
+
 - [E-commerce Website With Django and Vue Tutorial (Django Rest Framework)](https://www.youtube.com/watch?v=Yg5zkd9nm6w)
+- [Vue Router 4 for Everyone](https://vueschool.io/lessons/introduction-to-vue-router-4)
+
+### Articles
+
 - [ESLint and Prettier with Vite and Vue.js 3](https://vueschool.io/articles/vuejs-tutorials/eslint-and-prettier-with-vite-and-vue-js-3/)
 - [How To Enable Linting on Save with Visual Studio Code and ESLint](https://www.digitalocean.com/community/tutorials/workflow-auto-eslinting)
 
@@ -16,6 +30,9 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 - [Vue.js 3](https://vuejs.org/)
   - [Axios](https://www.npmjs.com/package/axios): Promise based HTTP client for the browser and node.js
   - [Bulma](https://www.npmjs.com/package/bulma): [Bulma](https://bulma.io/) is a modern CSS framework based on Flexbox.
+    - [bulma-toast](https://www.npmjs.com/package/bulma-toast): Bulma's pure JavaScript extension to display toasts. Basically a Bulma's notification implemented as a toast plugin.
+  - [Marked.js](https://marked.js.org/): a low-level markdown compiler for parsing markdown without caching or blocking for long periods of time.
+  - [DOMPurify](https://github.com/cure53/DOMPurify): a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG.
   - [Font Awesome](https://fontawesome.com/docs/web/use-with/vue/add-icons): Cool free [icons library](https://fontawesome.com/icons).
 
 ## Dev Tools used

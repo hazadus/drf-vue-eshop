@@ -28,7 +28,7 @@
           class="navbar-menu"
           :class="{ 'is-active': showMobileMenu }"
         >
-          <div class="navbar-start">
+          <div class="navbar-start is-size-5">
             <router-link to="/vinyl-records" class="navbar-item">
               Vinyl
             </router-link>
@@ -36,6 +36,7 @@
               Turntables
             </router-link>
             <router-link to="/mixers" class="navbar-item">Mixers</router-link>
+            <router-link to="/about" class="navbar-item">About</router-link>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -44,9 +45,8 @@
                   Log In
                 </router-link>
                 <router-link to="/cart" class="button is-success">
-                  <font-awesome-icon
-                    icon="fa-solid fa-cart-shopping"
-                  />&nbsp;Cart
+                  <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                  &nbsp;Cart ({{ cartTotalQuantity }})
                 </router-link>
               </div>
             </div>
@@ -74,11 +74,34 @@ export default {
   data() {
     return {
       showMobileMenu: false,
+      cart: {
+        items: [],
+      },
     };
+  },
+  computed: {
+    cartTotalQuantity() {
+      let totalQuantity = 0;
+
+      for (let i = 0; i < this.cart.items.length; i++) {
+        totalQuantity += this.cart.items[i].quantity;
+      }
+
+      return totalQuantity;
+    },
+  },
+  beforeCreate() {
+    this.$store.commit("initializeStore");
+  },
+  mounted() {
+    this.cart = this.$store.state.cart;
   },
 };
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+$family-sans-serif: "Nunito", sans-serif;
+
 @import "../node_modules/bulma";
 </style>
