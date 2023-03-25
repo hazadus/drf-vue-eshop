@@ -1,13 +1,11 @@
 <template>
   <div class="page-cart"></div>
 
-  <div class="columns is-multiline">
-    <div class="column is-12">
-      <h1 class="title is-size-1">Cart</h1>
-    </div>
+  <h1 class="title is-size-1">Cart</h1>
 
+  <div v-if="cartTotalQuantity" class="columns is-multiline">
     <div class="column is-23 box">
-      <table v-if="cartTotalQuantity" class="table is-fullwidth is-hoverable">
+      <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
             <th>Product Name</th>
@@ -22,26 +20,27 @@
             v-for="item in cart.items"
             :key="item.id"
             :initial-item="item"
+            @remove-from-cart="removeFromCart(item)"
           />
         </tbody>
+
+        <div class="columns is-fullwidth"></div>
       </table>
+    </div>
+    <div class="column is-4 is-offset-8 box has-text-centered">
+      <h2 class="subtitle">Summary</h2>
 
-      <p v-else>Your cart is empty!</p>
+      <strong>&euro; {{ cartTotalPrice.toFixed(2) }} </strong>,
+      {{ cartTotalQuantity }} items
 
-      <div class="column is-4 is-offset-8 box has-text-centered">
-        <h2 class="subtitle">Summary</h2>
+      <hr />
 
-        <strong>&euro; {{ cartTotalPrice.toFixed(2) }} </strong>,
-        {{ cartTotalQuantity }} items
-
-        <hr />
-
-        <router-link to="/cart/checkout" class="button is-success">
-          Proceed to checkout
-        </router-link>
-      </div>
+      <router-link to="/cart/checkout" class="button is-success">
+        Proceed to checkout
+      </router-link>
     </div>
   </div>
+  <p v-else>Your cart is empty!</p>
 </template>
 
 <script>
@@ -77,6 +76,13 @@ export default {
   },
   mounted() {
     this.cart = this.$store.state.cart;
+  },
+  methods: {
+    removeFromCart(item) {
+      this.cart.items = this.cart.items.filter(
+        (currentItem) => currentItem.product.id !== item.product.id
+      );
+    },
   },
 };
 </script>

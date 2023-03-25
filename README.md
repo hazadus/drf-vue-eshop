@@ -2,6 +2,16 @@
 
 Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 
+## Features
+
+Will be written soon.
+
+### ToDos
+
+The project is in development right now, you can check which features I am planning to implement
+in projects [Issues](https://github.com/hazadus/drf-vue-eshop/issues) section on GitHub. Any questions
+or ideas are welcome!
+
 ## What I have learned while building this project
 
 - Tried out Bulma.
@@ -53,6 +63,8 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 
 ## How to start the project
 
+The project consists of two parts - backend and frontend, and you need to run them simultaneously.
+
 First of all you have to clone the repository to your local directory:
 
 ```bash
@@ -73,12 +85,27 @@ pip install -r requirements.txt
 Then, create `.env` file using `touch ./.env` shell command, say `nano ./.env` and fill inn the necessary
 environment variables:
 
-| Variable     | Description                              |
-|--------------|------------------------------------------|
-| SECRET_KEY   | Standard Django secret key string.       |
-| DEBUG        | `True` since we are in development mode. |
-| FRONTEND_URL | `http://127.0.0.1:8080` by default.      |
-| BACKEND_URL  | `http://127.0.0.1:8000` by default.      |
+| Variable     | Description                                                              |
+|--------------|--------------------------------------------------------------------------|
+| SECRET_KEY   | Standard Django secret key string. See below how to easily generate one. |
+| DEBUG        | `True` since we are in development mode.                                 |
+| FRONTEND_URL | `http://127.0.0.1:8080` by default.                                      |
+| BACKEND_URL  | `http://127.0.0.1:8000` by default.                                      |
+
+To create random `SECRET_KEY`, open Django `shell` with following commands and then execute the code below:
+
+```bash
+source .venv/bin/activate
+python -m manage shell
+```
+```python
+# Inside the shell:
+import secrets
+print(secrets.token_urlsafe())
+# It will print something like:
+# U9d7Aqac7Feo8dUyy-I4A1ppAGbwj4PUmrd8_uPSu9g
+# Copy it and use as your SECRET_KEY.
+```
 
 Now we are ready to migrate the database, create admin user account, and start the server:
 
