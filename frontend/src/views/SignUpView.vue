@@ -40,7 +40,9 @@
             <hr />
 
             <p>
-              <router-link to="/log-in/" class="is-link">Log In</router-link>
+              <router-link :to="{ name: 'LogInView' }" class="is-link">
+                Log In
+              </router-link>
               if you already have an account.
             </p>
           </form>

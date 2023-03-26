@@ -36,10 +36,14 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* add some free icons */
 import { faVuejs, faGithub, faNode } from "@fortawesome/free-brands-svg-icons";
-import { faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faSearch,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
-library.add(faVuejs, faGithub, faNode, faCartShopping, faSearch);
+library.add(faVuejs, faGithub, faNode, faCartShopping, faSearch, faUser);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

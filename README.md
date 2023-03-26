@@ -16,7 +16,7 @@ or ideas are welcome!
 
 - Tried out Bulma.
 - DRF can serialize output from `@property` or regular model methods as well as from model fields.
-- Practised using [Vue Router](https://router.vuejs.org/).
+- Practised using [Vue Router](https://router.vuejs.org/):
   - [Watch and handle](https://router.vuejs.org/guide/essentials/dynamic-matching.html#reacting-to-params-changes) route changed when the route view is reused (e.g. in `CategoryDetailView`).
   - Using [Named routes](https://router.vuejs.org/guide/essentials/named-routes.html#named-routes) (e.g. `<router-link :to="{ name: 'AboutView' }" class="is-link">` instead of hardcoding link to the view).
   - Lazy loading routes (e.g. `component: () => import(/* webpackChunkName: "SignUpView" */ "../views/SignUpView.vue"),` ).
@@ -24,6 +24,9 @@ or ideas are welcome!
 - How to use `bulma-toast`.
 - How to properly set page titles for Vue views.
 - Learned the difference between [Named import and Default import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#description) in JavaScript.
+- How to authenticate via REST API using Djoser.
+- Practice using [Vuex](https://vuex.vuejs.org/guide/):
+  - Using storage data in templates (e.g. `v-if="!$store.state.isAuthenticated"`).
 
 ## References
 

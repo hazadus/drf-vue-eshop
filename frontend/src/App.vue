@@ -3,7 +3,7 @@
     <nav class="navbar is-link">
       <div class="container is-widescreen">
         <div class="navbar-brand">
-          <router-link to="/" class="navbar-item">
+          <router-link :to="{ name: 'HomeView' }" class="navbar-item">
             <h2 class="title is-2 has-text-light">
               <font-awesome-icon icon="fa-brands fa-vuejs" />
               <strong>uEshop</strong>
@@ -30,7 +30,10 @@
         >
           <div class="navbar-start is-size-5">
             <router-link
-              to="/vinyl-records/"
+              :to="{
+                name: 'CategoryDetailView',
+                params: { categorySlug: 'vinyl-records' },
+              }"
               class="navbar-item"
               :class="{
                 'is-active': $route.params.categorySlug === 'vinyl-records',
@@ -39,7 +42,10 @@
               Vinyl
             </router-link>
             <router-link
-              to="/turntables/"
+              :to="{
+                name: 'CategoryDetailView',
+                params: { categorySlug: 'turntables' },
+              }"
               class="navbar-item"
               :class="{
                 'is-active': $route.params.categorySlug === 'turntables',
@@ -48,7 +54,10 @@
               Turntables
             </router-link>
             <router-link
-              to="/mixers/"
+              :to="{
+                name: 'CategoryDetailView',
+                params: { categorySlug: 'mixers' },
+              }"
               class="navbar-item"
               :class="{
                 'is-active': $route.params.categorySlug === 'mixers',
@@ -57,7 +66,7 @@
               Mixers
             </router-link>
             <router-link
-              to="/about/"
+              :to="{ name: 'AboutView' }"
               class="navbar-item"
               :class="{
                 'is-active': $route.name === 'about',
@@ -90,10 +99,25 @@
             </div>
             <div class="navbar-item">
               <div class="buttons">
-                <router-link to="/log-in" class="button is-light">
+                <router-link
+                  v-if="!$store.state.isAuthenticated"
+                  :to="{ name: 'LogInView' }"
+                  class="button is-light"
+                >
                   Log In
                 </router-link>
-                <router-link to="/cart/" class="button is-success">
+                <router-link
+                  v-else
+                  :to="{ name: 'AboutView' }"
+                  class="button is-light"
+                >
+                  <font-awesome-icon icon="fa-solid fa-user" />
+                  &nbsp;Profile
+                </router-link>
+                <router-link
+                  :to="{ name: 'CartView' }"
+                  class="button is-success"
+                >
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
                   &nbsp;Cart ({{ cartTotalQuantity }})
                 </router-link>
@@ -129,11 +153,16 @@
           </p>
         </div>
         <div class="column is-10 has-text-centered">
-          <router-link :to="{ name: 'SignUpView' }" class="is-link"
-            >Sign Up</router-link
-          >
-          &middot;
-          <router-link to="/log-in/" class="is-link">Log In</router-link>
+          <template v-if="!$store.state.isAuthenticated">
+            <router-link :to="{ name: 'SignUpView' }" class="is-link">
+              Sign Up
+            </router-link>
+            &middot;
+            <router-link :to="{ name: 'LogInView' }" class="is-link">
+              Log In
+            </router-link>
+          </template>
+          <template v-else> Profile &middot; Logout </template>
           &middot;
           <router-link :to="{ name: 'AboutView' }" class="is-link">
             About
@@ -145,6 +174,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -166,7 +197,16 @@ export default {
     },
   },
   beforeCreate() {
+    // Load initial data from local storage
     this.$store.commit("initializeStore");
+
+    // Configure axios headers
+    const token = this.$store.state.token;
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = "Token " + token;
+    } else {
+      axios.defaults.headers.common["Authorization"] = "";
+    }
   },
   mounted() {
     this.cart = this.$store.state.cart;
