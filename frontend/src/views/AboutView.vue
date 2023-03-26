@@ -3,7 +3,10 @@
     <h1 class="title is-size-1">About the project</h1>
     <h2 class="subtitle">What this stuff is all about</h2>
 
-    <p>This is a tutorial project to learn more about Django, DRF and Vue3.</p>
+    <p>
+      This is a tutorial project to learn more about Django, DRF,
+      <font-awesome-icon icon="fa-brands fa-node" /> Node and Vue3.
+    </p>
 
     <p>Write about what I have learned while doing this project.</p>
 

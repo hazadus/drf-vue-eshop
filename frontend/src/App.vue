@@ -111,15 +111,34 @@
       <div class="lds-dual-ring"></div>
     </div>
 
-    <section class="section">
+    <section class="section page-content">
       <div class="container is-widescreen">
         <router-view />
       </div>
     </section>
 
     <footer class="footer">
-      <div class="content has-text-centered">
-        <p>&copy; hazadus 2023</p>
+      <div class="columns">
+        <div class="column is-2 content has-text-centered">
+          <p>
+            &copy;
+            <a href="https://www.github.com/hazadus/" class="is-link">
+              hazadus
+            </a>
+            2023
+          </p>
+        </div>
+        <div class="column is-10 has-text-centered">
+          <router-link :to="{ name: 'SignUpView' }" class="is-link"
+            >Sign Up</router-link
+          >
+          &middot;
+          <router-link to="/log-in/" class="is-link">Log In</router-link>
+          &middot;
+          <router-link :to="{ name: 'AboutView' }" class="is-link">
+            About
+          </router-link>
+        </div>
       </div>
     </footer>
   </div>
@@ -160,6 +179,15 @@ export default {
 $family-sans-serif: "Nunito", sans-serif;
 
 @import "../node_modules/bulma";
+
+.wrapper {
+  min-height: 100vh;
+}
+
+/* 100vh - footer height - header height. Quick and dirty! */
+.page-content {
+  min-height: calc(100vh - 192px - 61px);
+}
 
 /* Loading indicator-related stuff */
 .lds-dual-ring {

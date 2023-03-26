@@ -1,9 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import CartView from "../views/CartView.vue";
-import SearchView from "../views/SearchView.vue";
-import ProductDetailView from "../views/ProductDetailView.vue";
-import CategoryDetailView from "../views/CategoryDetailView.vue";
 
 const routes = [
   {
@@ -14,31 +10,45 @@ const routes = [
   {
     path: "/search/",
     name: "SearchView",
-    component: SearchView,
+    component: () =>
+      import(/* webpackChunkName: "SearchView" */ "../views/SearchView.vue"),
   },
   {
     path: "/cart/",
     name: "CartView",
-    component: CartView,
+    component: () =>
+      import(/* webpackChunkName: "CartView" */ "../views/CartView.vue"),
   },
   {
-    path: "/about",
-    name: "about",
+    path: "/sign-up/",
+    name: "SignUpView",
+    component: () =>
+      import(/* webpackChunkName: "SignUpView" */ "../views/SignUpView.vue"),
+  },
+  {
+    path: "/about/",
+    name: "AboutView",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+      import(/* webpackChunkName: "AboutView" */ "../views/AboutView.vue"),
   },
   {
     path: "/:categorySlug/:productSlug/",
     name: "ProductDetailView",
-    component: ProductDetailView,
+    component: () =>
+      import(
+        /* webpackChunkName: "ProductDetailView" */ "../views/ProductDetailView.vue"
+      ),
   },
   {
     path: "/:categorySlug/",
     name: "CategoryDetailView",
-    component: CategoryDetailView,
+    component: () =>
+      import(
+        /* webpackChunkName: "CategoryDetailView" */ "../views/CategoryDetailView.vue"
+      ),
   },
 ];
 
