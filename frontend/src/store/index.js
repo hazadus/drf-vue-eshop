@@ -58,6 +58,7 @@ export default createStore({
     },
     removeToken(state) {
       state.token = "";
+      localStorage.removeItem("token");
       state.isAuthenticated = false;
     },
   },

@@ -19,7 +19,8 @@ or ideas are welcome!
 - Practised using [Vue Router](https://router.vuejs.org/):
   - [Watch and handle](https://router.vuejs.org/guide/essentials/dynamic-matching.html#reacting-to-params-changes) route changed when the route view is reused (e.g. in `CategoryDetailView`).
   - Using [Named routes](https://router.vuejs.org/guide/essentials/named-routes.html#named-routes) (e.g. `<router-link :to="{ name: 'AboutView' }" class="is-link">` instead of hardcoding link to the view).
-  - Lazy loading routes (e.g. `component: () => import(/* webpackChunkName: "SignUpView" */ "../views/SignUpView.vue"),` ).
+  - [Lazy loading routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) (e.g. `component: () => import(/* webpackChunkName: "SignUpView" */ "../views/SignUpView.vue"),` ).
+  - Marking routes as `requireLogin` using [Route Meta Fields](https://router.vuejs.org/guide/advanced/meta.html#route-meta-fields).
 - How to use [Vuex](https://vuex.vuejs.org/guide/).
 - How to use `bulma-toast`.
 - How to properly set page titles for Vue views.

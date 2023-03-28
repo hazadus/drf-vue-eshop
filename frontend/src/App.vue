@@ -108,7 +108,7 @@
                 </router-link>
                 <router-link
                   v-else
-                  :to="{ name: 'AboutView' }"
+                  :to="{ name: 'ProfileView' }"
                   class="button is-light"
                 >
                   <font-awesome-icon icon="fa-solid fa-user" />
@@ -162,7 +162,11 @@
               Log In
             </router-link>
           </template>
-          <template v-else> Profile &middot; Logout </template>
+          <template v-else>
+            <router-link :to="{ name: 'ProfileView' }" class="is-link">
+              Profile
+            </router-link>
+          </template>
           &middot;
           <router-link :to="{ name: 'AboutView' }" class="is-link">
             About

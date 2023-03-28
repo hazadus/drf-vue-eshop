@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import store from "../store";
 import HomeView from "../views/HomeView.vue";
 
 const routes = [
@@ -32,6 +33,15 @@ const routes = [
       import(/* webpackChunkName: "LogInView" */ "../views/LogInView.vue"),
   },
   {
+    path: "/profile/",
+    name: "ProfileView",
+    component: () =>
+      import(/* webpackChunkName: "ProfileView" */ "../views/ProfileView.vue"),
+    meta: {
+      requireLogin: true,
+    },
+  },
+  {
     path: "/about/",
     name: "AboutView",
     // route level code-splitting
@@ -61,6 +71,24 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  /*
+  Check if route has `meta: { requireLogin: true, }` then redirect to login page if user
+  is not authenticated.
+  Reference: https://router.vuejs.org/guide/advanced/meta.html
+  */
+  if (
+    // to.matched.some((parameter) => parameter.meta.requireLogin) &&
+    // !store.state.isAuthenticated
+    to.meta.requireLogin &&
+    !store.state.isAuthenticated
+  ) {
+    next({ name: "LogInView", query: { to: to.path } });
+  } else {
+    next();
+  }
 });
 
 export default router;
