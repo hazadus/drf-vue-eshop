@@ -13,6 +13,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # Local apps
     path("api/v1/", include("products.urls")),
+    path("api/v1/", include("orders.urls")),
     # Djoser endpoints to manage users:
     path("api/v1/", include("djoser.urls")),
     path("api/v1/", include("djoser.urls.authtoken")),

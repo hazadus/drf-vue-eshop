@@ -4,5 +4,6 @@ ignore-module = true
 exclude = [
     "manage.py",
     "products/migrations", "products/admin.py", "products/apps.py",
+    "orders/migrations", "orders/admin.py", "orders/apps.py",
 ]
 ignore-regex = ["Meta", "__str__", "setUpTestData", "setUp", "get_absolute_url"]

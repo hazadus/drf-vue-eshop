@@ -32,6 +32,7 @@ or ideas are welcome!
 - Practiced using [Vuex](https://vuex.vuejs.org/guide/):
   - Using storage data in templates (e.g. `v-if="!$store.state.isAuthenticated"`).
   - "Watching" objects in store to reactively reflect changes in UI (see `cart` computed property in `App.vue`). Read more in [Vuex Docs](https://vuex.vuejs.org/guide/getters.html#the-mapgetters-helper) and [this answer](https://stackoverflow.com/a/43294294) on SO.
+- How to solve regular problem when [PyCharm not recognizing Django project imports: from my_app.models import thing](https://stackoverflow.com/a/40934430).
 
 ## References
 
