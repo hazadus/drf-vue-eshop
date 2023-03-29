@@ -34,6 +34,7 @@ or ideas are welcome!
   - "Watching" objects in store to reactively reflect changes in UI (see `cart` computed property in `App.vue`). Read more in [Vuex Docs](https://vuex.vuejs.org/guide/getters.html#the-mapgetters-helper) and [this answer](https://stackoverflow.com/a/43294294) on SO.
 - How to solve regular problem when [PyCharm not recognizing Django project imports: from my_app.models import thing](https://stackoverflow.com/a/40934430).
 - How to properly serialize `Order` with multiple `OrderItems` to correctly and **easily** process data from frontend on backend.
+- How to configure Djoser to [use custom serializers](https://djoser.readthedocs.io/en/latest/settings.html?highlight=users%2Fme#serializers) for `/users/me/` endpoint.
 
 ## References
 

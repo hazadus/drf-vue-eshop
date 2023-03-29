@@ -3,6 +3,7 @@ ignore-init-module = true
 ignore-module = true
 exclude = [
     "manage.py",
+    "core/apps.py",
     "products/migrations", "products/admin.py", "products/apps.py",
     "orders/migrations", "orders/admin.py", "orders/apps.py",
 ]
