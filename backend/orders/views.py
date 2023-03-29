@@ -43,7 +43,7 @@ class OrdersList(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     @staticmethod
-    def get(self, request: Request) -> Response:
+    def get(request: Request) -> Response:
         """
         Return all user's orders.
         """
