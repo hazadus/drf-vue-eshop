@@ -8,6 +8,7 @@ from .models import Order, OrderItem
 class ListOrderItemSerializer(serializers.ModelSerializer):
     """
     OrderItem serializer for ListOrderSerializer.
+    The difference with `CreateOrderItemSerializer` is thar we want full infofor `product`, not only `id`.
     """
 
     product = ProductSerializer()
@@ -24,6 +25,7 @@ class ListOrderItemSerializer(serializers.ModelSerializer):
 class ListOrderSerializer(serializers.ModelSerializer):
     """
     Order serializer used to LIST existing orders.
+    Here we use `ListOrderItemSerializer` to have full info on products in `items`.
     """
 
     items = ListOrderItemSerializer(many=True)
@@ -46,6 +48,7 @@ class ListOrderSerializer(serializers.ModelSerializer):
 class CreateOrderItemSerializer(serializers.ModelSerializer):
     """
     OrderItem serializer for CreateOrderSerializer.
+    The difference with `ListOrderSerializer` is that we only want `id` for `product`.
     """
 
     class Meta:
@@ -60,6 +63,8 @@ class CreateOrderItemSerializer(serializers.ModelSerializer):
 class CreateOrderSerializer(serializers.ModelSerializer):
     """
     Order serializer used to CREATE new orders.
+    Here we use `CreateOrderItemSerializer` with only product `id`s, and overrite `create()` method
+    to properly create all `OrderItem`s in DB.
     """
 
     items = CreateOrderItemSerializer(many=True)
