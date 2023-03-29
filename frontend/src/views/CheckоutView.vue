@@ -111,6 +111,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "CheckOutView",
   components: {},
@@ -175,13 +177,51 @@ export default {
       if (!this.errors.length) {
         this.$store.commit("setIsLoading", true);
 
-        // Proceed with real payment stuff here!
+        this.proceedCheckout();
 
         this.$store.commit("setIsLoading", false);
 
         this.$store.commit("clearCart");
         this.$router.push({ name: "CheckoutSuccessView" });
       }
+    },
+    async proceedCheckout() {
+      /*
+      Proceed real payment stuff on backend here:
+      make payment, create order.
+      */
+      const items = [];
+      for (let i = 0; i < this.cart.items.length; i++) {
+        const item = this.cart.items[i];
+        const obj = {
+          product: item.product.id,
+          quantity: item.quantity,
+          price: item.product.price * item.quantity,
+        };
+        items.push(obj);
+      }
+
+      const data = {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        address: this.address,
+        place: this.place,
+        phone: this.phone,
+        items: items,
+      };
+
+      await axios
+        .post("/api/v1/checkout/", data)
+        .then((response) => {
+          console.log(response.data);
+          this.$store.commit("clearCart");
+          this.$router.push({ name: "CheckoutSuccessView" });
+        })
+        .catch((error) => {
+          this.errors.push("Something went wrong. Please try again.");
+          console.log(error);
+        });
     },
   },
 };
