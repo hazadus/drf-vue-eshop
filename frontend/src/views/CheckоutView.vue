@@ -111,8 +111,6 @@
 </template>
 
 <script>
-//import axios from "axios";
-
 export default {
   name: "CheckOutView",
   components: {},
@@ -145,7 +143,7 @@ export default {
     },
   },
   mounted() {
-    document.title = "Check Out | vuEshop";
+    document.title = "Checkout | vuEshop";
     this.cart = this.$store.state.cart;
   },
   methods: {
@@ -182,7 +180,7 @@ export default {
         this.$store.commit("setIsLoading", false);
 
         this.$store.commit("clearCart");
-        this.$router.push("/cart/success/");
+        this.$router.push({ name: "CheckoutSuccessView" });
       }
     },
   },

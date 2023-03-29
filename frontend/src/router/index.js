@@ -32,6 +32,17 @@ const routes = [
     },
   },
   {
+    path: "/checkout/success/",
+    name: "CheckoutSuccessView",
+    component: () =>
+      import(
+        /* webpackChunkName: "CheckoutSuccessView" */ "../views/CheckoutSuccessView.vue"
+      ),
+    meta: {
+      requireLogin: true,
+    },
+  },
+  {
     path: "/sign-up/",
     name: "SignUpView",
     component: () =>
