@@ -35,7 +35,10 @@
 
       <hr />
 
-      <router-link to="/cart/checkout" class="button is-success">
+      <button class="button is-warning mr-2" @click="clearCart">
+        Clear cart
+      </button>
+      <router-link :to="{ name: 'CheckoutView' }" class="button is-success">
         Proceed to checkout
       </router-link>
     </div>
@@ -44,9 +47,6 @@
 </template>
 
 <script>
-// import axios from "axios";
-// import toast from "bulma-toast";
-
 import CartItem from "@/components/CartItem.vue";
 
 export default {
@@ -78,6 +78,11 @@ export default {
     this.cart = this.$store.state.cart;
   },
   methods: {
+    clearCart() {
+      this.$store.commit("clearCart");
+      this.cart = { items: [] };
+      this.$router.push({ name: "HomeView" });
+    },
     removeFromCart(item) {
       this.cart.items = this.cart.items.filter(
         (currentItem) => currentItem.product.id !== item.product.id

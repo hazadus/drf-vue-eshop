@@ -179,17 +179,21 @@
 
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
     return {
       showMobileMenu: false,
-      cart: {
-        items: [],
-      },
     };
   },
   computed: {
+    ...mapGetters({
+      /*
+      This maps `cart` state from Vuex store to computed property.
+      */
+      cart: "getCart",
+    }),
     cartTotalQuantity() {
       let totalQuantity = 0;
 
@@ -212,9 +216,7 @@ export default {
       axios.defaults.headers.common["Authorization"] = "";
     }
   },
-  mounted() {
-    this.cart = this.$store.state.cart;
-  },
+  mounted() {},
 };
 </script>
 

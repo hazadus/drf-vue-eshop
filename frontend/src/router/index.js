@@ -21,6 +21,17 @@ const routes = [
       import(/* webpackChunkName: "CartView" */ "../views/CartView.vue"),
   },
   {
+    path: "/checkout/",
+    name: "CheckoutView",
+    component: () =>
+      import(
+        /* webpackChunkName: "CheckoutView" */ "../views/CheckоutView.vue"
+      ),
+    meta: {
+      requireLogin: true,
+    },
+  },
+  {
     path: "/sign-up/",
     name: "SignUpView",
     component: () =>

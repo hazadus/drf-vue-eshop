@@ -4,7 +4,11 @@ Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 
 ## Features
 
-Will be written soon.
+- User authentication - sign up, log in, log out.
+- Product cart with checkout page (no real payment processing code, though, but it can be easily included).
+- Markdown support in product descriptions.
+- Powerful Django Admin panel can be used to easily create and modify products, categories, users, etc.
+- You can easily get this app up and running on your own using step by step instructions below.
 
 ### ToDos
 
@@ -21,13 +25,13 @@ or ideas are welcome!
   - Using [Named routes](https://router.vuejs.org/guide/essentials/named-routes.html#named-routes) (e.g. `<router-link :to="{ name: 'AboutView' }" class="is-link">` instead of hardcoding link to the view).
   - [Lazy loading routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) (e.g. `component: () => import(/* webpackChunkName: "SignUpView" */ "../views/SignUpView.vue"),` ).
   - Marking routes as `requireLogin` using [Route Meta Fields](https://router.vuejs.org/guide/advanced/meta.html#route-meta-fields).
-- How to use [Vuex](https://vuex.vuejs.org/guide/).
 - How to use `bulma-toast`.
 - How to properly set page titles for Vue views.
 - Learned the difference between [Named import and Default import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#description) in JavaScript.
-- How to authenticate via REST API using Djoser.
-- Practice using [Vuex](https://vuex.vuejs.org/guide/):
+- How to authenticate via REST API using Djoser and Axios.
+- Practiced using [Vuex](https://vuex.vuejs.org/guide/):
   - Using storage data in templates (e.g. `v-if="!$store.state.isAuthenticated"`).
+  - "Watching" objects in store to reactively reflect changes in UI (see `cart` computed property in `App.vue`). Read more in [Vuex Docs](https://vuex.vuejs.org/guide/getters.html#the-mapgetters-helper) and [this answer](https://stackoverflow.com/a/43294294) on SO.
 
 ## References
 
@@ -46,10 +50,10 @@ or ideas are welcome!
 
 ### Frameworks and libraries
 
-- [Django](https://www.djangoproject.com/)
-  - [Django REST Framework](https://www.django-rest-framework.org/)
+- Backend: [Django](https://www.djangoproject.com/)
+  - [Django REST Framework](https://www.django-rest-framework.org/): REST API on the backend was built using this battle-tested framework. It's powerful, well-documented and easy to use.
   - [djoser](https://djoser.readthedocs.io/en/latest/introduction.html): REST implementation of Django authentication system. djoser library provides a set of Django Rest Framework views to handle basic actions such as registration, login, logout, password reset and account activation.
-- [Vue.js 3](https://vuejs.org/)
+- Frontend: [Vue.js 3](https://vuejs.org/)
   - [Axios](https://www.npmjs.com/package/axios): Promise based HTTP client for the browser and node.js
   - [Bulma](https://www.npmjs.com/package/bulma): [Bulma](https://bulma.io/) is a modern CSS framework based on Flexbox.
     - [bulma-toast](https://www.npmjs.com/package/bulma-toast): Bulma's pure JavaScript extension to display toasts. Basically a Bulma's notification implemented as a toast plugin.

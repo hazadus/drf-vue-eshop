@@ -9,7 +9,12 @@ export default createStore({
     token: "",
     isLoading: false,
   },
-  getters: {},
+  getters: {
+    /*
+    Used to "watch" cart updates using `mapGetters`.
+    */
+    getCart: (state) => state.cart,
+  },
   mutations: {
     initializeStore(state) {
       if (localStorage.getItem("cart")) {
@@ -42,6 +47,13 @@ export default createStore({
         state.cart.items.push(item);
       }
 
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    clearCart(state) {
+      /*
+      Reset cart to empty state.
+      */
+      state.cart = { items: [] };
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     setIsLoading(state, status) {
