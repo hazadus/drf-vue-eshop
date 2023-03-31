@@ -34,7 +34,9 @@ or ideas are welcome!
   - "Watching" objects in store to reactively reflect changes in UI (see `cart` computed property in `App.vue`). Read more in [Vuex Docs](https://vuex.vuejs.org/guide/getters.html#the-mapgetters-helper) and [this answer](https://stackoverflow.com/a/43294294) on SO.
 - How to solve regular problem when [PyCharm not recognizing Django project imports: from my_app.models import thing](https://stackoverflow.com/a/40934430).
 - How to properly serialize `Order` with multiple `OrderItems` to correctly and **easily** process data from frontend on backend.
-- How to configure Djoser to [use custom serializers](https://djoser.readthedocs.io/en/latest/settings.html?highlight=users%2Fme#serializers) for `/users/me/` endpoint.
+- How to configure Djoser to [use custom serializers](https://djoser.readthedocs.io/en/latest/settings.html?highlight=users%2Fme#serializers) for `/users/me/` endpoint. Unfortunately, I have failed to make this endpoint work with token auth, so decided to create my own endpoint `/user/details/`.
+- [Properly setting dafaults](https://eslint.vuejs.org/rules/require-default-prop.html) for component props. Especially, for [Objects](https://eslint.vuejs.org/rules/require-valid-default-prop.html).
+
 
 ## References
 
@@ -73,6 +75,7 @@ or ideas are welcome!
   - [interrogate](https://interrogate.readthedocs.io/en/latest/): `interrogate` checks your code base for missing docstrings.
 - JavaScript
   - [ESlint](https://eslint.org/): ESLint statically analyzes your code to quickly find problems.
+    - [eslint-plugin-vue](https://eslint.vuejs.org): Official ESLint plugin for Vue.js.
   - [Prettier](https://prettier.io/) [VSCode plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Your code is formatted on save. Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
 
 ## How to start the project

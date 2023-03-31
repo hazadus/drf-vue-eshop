@@ -35,7 +35,13 @@
 export default {
   name: "OrderSummary",
   props: {
-    order: Object,
+    order: {
+      type: Object,
+      default() {
+        return {};
+      },
+      required: true,
+    },
   },
   methods: {
     getItemTotal(item) {

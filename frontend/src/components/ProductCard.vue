@@ -22,7 +22,13 @@
 export default {
   name: "ProductCard",
   props: {
-    product: Object,
+    product: {
+      type: Object,
+      default() {
+        return {};
+      },
+      required: true,
+    },
   },
 };
 </script>

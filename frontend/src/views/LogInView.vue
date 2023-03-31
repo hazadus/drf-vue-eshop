@@ -74,15 +74,11 @@ export default {
       await axios
         .post("/api/v1/token/login/", formData)
         .then((response) => {
-          console.log(response.data);
           const token = response.data.auth_token;
           // Save token in Vuex store, Local storage, and set `isAuthenticated` global state to `true`:
           this.$store.commit("setToken", token);
 
           axios.defaults.headers.common["Authorization"] = "Token " + token;
-
-          const toPath = this.$route.query.to || { name: "CartView" };
-          this.$router.push(toPath);
         })
         .catch((error) => {
           if (error.response) {
@@ -95,6 +91,24 @@ export default {
             console.log(JSON.stringify(error));
           }
         });
+
+      /*
+      Get detailed user info to use throughout the app.
+      */
+      await axios
+        .get("/api/v1/user/details/")
+        .then((response) => {
+          const user = response.data;
+          // Save user info to Vuex store for global use.
+          this.$store.commit("setUser", user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // Redirect to profile page
+      const toPath = this.$route.query.to || { name: "ProfileView" };
+      this.$router.push(toPath);
     },
   },
 };

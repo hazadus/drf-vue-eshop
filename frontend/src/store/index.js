@@ -5,6 +5,7 @@ export default createStore({
     cart: {
       items: [],
     },
+    user: {},
     isAuthenticated: false,
     token: "",
     isLoading: false,
@@ -14,6 +15,7 @@ export default createStore({
     Used to "watch" cart updates using `mapGetters`.
     */
     getCart: (state) => state.cart,
+    getUser: (state) => state.user,
   },
   mutations: {
     initializeStore(state) {
@@ -72,6 +74,18 @@ export default createStore({
       state.token = "";
       localStorage.removeItem("token");
       state.isAuthenticated = false;
+    },
+    setUser(state, user) {
+      /*
+      Save detailed user info we get from our "user/details/" endpoint to use throughout the app.
+      */
+      state.user = user;
+    },
+    removeUser(state) {
+      /*
+      Clear user info on logout.
+      */
+      state.user = {};
     },
   },
   actions: {},

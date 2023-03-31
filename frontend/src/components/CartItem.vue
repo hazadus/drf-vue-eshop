@@ -38,7 +38,13 @@
 export default {
   name: "CartItem",
   props: {
-    initialItem: Object,
+    initialItem: {
+      type: Object,
+      default() {
+        return {};
+      },
+      required: true,
+    },
   },
   emits: ["removeFromCart"],
   data() {

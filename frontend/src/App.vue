@@ -112,7 +112,7 @@
                   class="button is-light"
                 >
                   <font-awesome-icon icon="fa-solid fa-user" />
-                  &nbsp;Profile
+                  &nbsp;{{ user.username }}
                 </router-link>
                 <router-link
                   :to="{ name: 'CartView' }"
@@ -190,9 +190,10 @@ export default {
   computed: {
     ...mapGetters({
       /*
-      This maps `cart` state from Vuex store to computed property.
+      This maps `cart` and `user` state from Vuex store to computed properties.
       */
       cart: "getCart",
+      user: "getUser",
     }),
     cartTotalQuantity() {
       let totalQuantity = 0;

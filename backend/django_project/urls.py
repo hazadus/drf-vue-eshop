@@ -12,6 +12,7 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     # Local apps
+    path("api/v1/", include("core.urls")),
     path("api/v1/", include("products.urls")),
     path("api/v1/", include("orders.urls")),
     # Djoser endpoints to manage users:
