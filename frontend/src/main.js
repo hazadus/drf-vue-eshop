@@ -26,7 +26,8 @@ const markedMixin = {
   },
 };
 
-axios.defaults.baseURL = "http://127.0.0.1:8000";
+/* Add port ":8000" when running w/o Docker */
+axios.defaults.baseURL = "http://127.0.0.1";
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";

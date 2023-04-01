@@ -21,12 +21,17 @@ SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG", False)
 FRONTEND_URL = env.str("FRONTEND_URL", "http://127.0.0.1:8080")
 BACKEND_URL = env.str("BACKEND_URL", "http://127.0.0.1:8000")
+BACKEND_HOST = env.str("BACKEND_HOST", "127.0.0.1")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "0.0.0.0",
+    BACKEND_HOST,
+]
 
 CORS_ALLOWED_ORIGINS = [
     FRONTEND_URL,

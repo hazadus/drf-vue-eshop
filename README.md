@@ -102,12 +102,13 @@ pip install -r requirements.txt
 Then, create `.env` file using `touch ./.env` shell command, say `nano ./.env` and fill inn the necessary
 environment variables:
 
-| Variable     | Description                                                              |
-|--------------|--------------------------------------------------------------------------|
-| SECRET_KEY   | Standard Django secret key string. See below how to easily generate one. |
-| DEBUG        | `True` since we are in development mode.                                 |
-| FRONTEND_URL | `http://127.0.0.1:8080` by default.                                      |
-| BACKEND_URL  | `http://127.0.0.1:8000` by default.                                      |
+| Variable     | Description                                                                                      |
+|--------------|--------------------------------------------------------------------------------------------------|
+| SECRET_KEY   | Standard Django secret key string. See below how to easily generate one.                         |
+| DEBUG        | `True` since we are in development mode.                                                         |
+| FRONTEND_URL | Used for `CORS_ALLOWED_ORIGINS` Django setting. `http://127.0.0.1:8080` by default.              |
+| BACKEND_URL  | Used to build links to media files (in `products/models.py`. `http://127.0.0.1:8000` by default. |
+| BACKEND_HOST | Used in `ALLOWED_HOSTS` Django setting. `127.0.0.1` by default.                                  |
 
 To create random `SECRET_KEY`, open Django `shell` with following commands and then execute the code below:
 

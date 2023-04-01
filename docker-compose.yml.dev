@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  api:
+    container_name: "eshop-api"
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/code
+    environment:
+      - "SECRET_KEY="
+      - "DEBUG=True"
+      - "FRONTEND_URL="
+      - "BACKEND_URL="
+      - "BACKEND_HOST="
+  nginx:
+    container_name: "eshop-nginx"
+    image: nginx:1.23-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./backend:/code
+      - ./docker/nginx/logs:/var/log/nginx
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./backend/media:/media
+      - ./frontend/dist:/frontend
+    depends_on:
+      - api
