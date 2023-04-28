@@ -2,6 +2,8 @@
 
 Tutorial project to learn how to combine DRF API, Vue.js 3, Nginx and Node.
 
+Check out project demo at http://vueshop.hazadus.ru/.
+
 ## Features
 
 - User authentication - sign up, log in, log out.
@@ -134,12 +136,45 @@ python -m manage createsuperuser
 python -m manage runserver
 ```
 
-In second shell window, run the frontend development server:
+In second shell window, install project dependencies and then run the frontend development server:
 
 ```bash
 cd ../frontend
+npm install
 npm run serve
 ```
 
 Visit `http://127.0.0.1:8080` in your browser to see the working project.
 Django admin panel is available at `http://127.0.0.1:8000/admin/`.
+
+
+### Running with Docker Compose
+
+...Yet to be written in detail...
+
+Basic steps are:
+
+- Install docker & compose
+  - [Install Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+  - [Install Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
+- Clone repo.
+- Create `./docker-compose.yml` with env vars.
+- Create `./frontend/src/config.js` using template.
+- `docker compose up -d`
+- collectstatic
+- create super user
+
+```bash
+docker compose up -d
+docker exec -it eshop-api bash
+python -m manage migrate
+python -m manage createsuperuser
+python -m manage collectstatic
+```
+
+- restart - down / up
+
+## Known Issues
+
+- There's a strange behavior: when you log in in Django Admin, then you can't login with App's login page until you 
+  explicitly logout from admin panel.

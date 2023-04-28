@@ -1,12 +1,12 @@
 import { createApp } from "vue";
-import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
-
-// Add markdown as global
 import { marked } from "marked";
 import * as DOMPurify from "dompurify";
+
+import App from "./App.vue";
+import { baseURL } from "./config";
 
 marked.setOptions({
   breaks: true,
@@ -26,8 +26,7 @@ const markedMixin = {
   },
 };
 
-/* Add port ":8000" when running w/o Docker */
-axios.defaults.baseURL = "http://127.0.0.1";
+axios.defaults.baseURL = baseURL;
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";

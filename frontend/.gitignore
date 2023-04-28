@@ -2,6 +2,8 @@
 node_modules
 /dist
 
+# Exclude Config - should be created manually!
+/src/config.js
 
 # local env files
 .env.local

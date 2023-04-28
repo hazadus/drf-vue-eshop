@@ -1,0 +1,3 @@
+const baseURL = "http://vueshop.hazadus.ru";
+
+export { baseURL };
